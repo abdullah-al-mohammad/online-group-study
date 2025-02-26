@@ -1,0 +1,80 @@
+[
+    {
+      "id": 1,
+      "image":"https://i.ibb.co.com/ZzF45Swb/Live-Collaboration.jpg",
+      "title": "Live Collaboration",
+      "description": "Study together in real time with video, chat, and shared notes.",
+      "icon": "FaUsers"
+    },
+    {
+      "id": 2,
+      "image":"https://i.ibb.co.com/5pknQbb/Smart-Scheduling.jpg",
+      "title": "Smart Scheduling",
+      "description": "AI-powered scheduling for the best study sessions.",
+      "icon": "FaClock"
+    },
+    {
+      "id": 3,
+      "image":"https://i.ibb.co.com/QjMNh6LK/Resource-Sharing.jpg",
+      "title": "Resource Sharing",
+      "description": "Upload and access PDFs, links, and notes.",
+      "icon": "FaShareAlt"
+    },
+    {
+      "id": 4,
+      "image":"https://i.ibb.co.com/4w54FYC7/Gamified-Learning.png",
+      "title": "Gamified Learning",
+      "description": "Earn points, badges, and rewards for active participation.",
+      "icon": "FaGamepad"
+    },
+    {
+      "id": 5,
+      "image":"https://i.ibb.co.com/jZ6CV1Jc/Custom-Study-Rooms.jpg",
+      "title": "Custom Study Rooms",
+      "description": "Private and public study rooms for topic-based discussions.",
+      "icon": "FaDoorOpen"
+    },
+    {
+      "id": 6,
+      "image":"https://i.ibb.co.com/L20GR4y/Assistance.png",
+      "title": "24/7 AI Assistance",
+      "description": "Get instant help from AI tutors anytime.",
+      "icon": "FaRobot"
+    },
+    {
+      "id": 7,
+      "image":"https://i.ibb.co.com/p6nTZzPZ/AI-Powered-Notes.jpg",
+      "title": "AI-Powered Notes",
+      "description": "Automatically generate summaries from discussions and notes.",
+      "icon": "FaPenFancy"
+    },
+    {
+      "id": 8,
+      "image":"https://i.ibb.co.com/BHH87mcZ/Interactive-Whiteboard.png",
+      "title": "Interactive Whiteboard",
+      "description": "Draw, annotate, and collaborate visually in real time.",
+      "icon": "FaChalkboard"
+    },
+    {
+      "id": 9,
+      "image":"https://i.ibb.co.com/W40XbgrC/Peer-Reviews.png",
+      "title": "Peer Reviews",
+      "description": "Receive feedback on your work from fellow students.",
+      "icon": "FaStar"
+    },
+    {
+      "id": 10,
+      "image":"https://i.ibb.co.com/hRQP8kHT/Dark-Mode-Support.png",
+      "title": "Dark Mode Support",
+      "description": "Comfortable UI for night-time studying.",
+      "icon": "FaMoon"
+    },
+    {
+      "id": 11,
+      "image":"https://i.ibb.co.com/8gD7nD76/Progress-Tracking.png",
+      "title": "Progress Tracking",
+      "description": "Monitor study hours and topics covered.",
+      "icon": "FaChartLine"
+    }
+  ]
+  
