@@ -6,13 +6,19 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to={'assignment'}>assaignments</Link>
+        <Link to={'assignment'}>Assaignments</Link>
       </li>
       <li>
-        <Link to={'login'}>login</Link>
+        <Link to={'login'}>Login</Link>
       </li>
       <li>
         <Link to={'signup'}>register</Link>
+      </li>
+      <li>
+        <Link to={'createassignment'}>Create Assignment</Link>
+      </li>
+      <li>
+        <Link to={'createassignment'}>Pending Assignment</Link>
       </li>
     </>
   );

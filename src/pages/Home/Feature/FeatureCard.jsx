@@ -1,19 +1,17 @@
-import React from "react";
 import { FaUsers, FaClock, FaShareAlt, FaGamepad, FaDoorOpen, FaRobot } from "react-icons/fa";
 
 // Map string names from JSON to actual React Icons
 const iconMap = {
-    "FaUsers": FaUsers,
-    "FaClock": FaClock,
-    "FaShareAlt": FaShareAlt,
-    "FaGamepad": FaGamepad,
-    "FaDoorOpen": FaDoorOpen,
-    "FaRobot": FaRobot
+    "FaUsers": <FaUsers></FaUsers>,
+    "FaClock": <FaClock></FaClock>,
+    "FaShareAlt": <FaShareAlt></FaShareAlt>,
+    "FaGamepad": <FaGamepad></FaGamepad>,
+    "FaDoorOpen": <FaDoorOpen></FaDoorOpen>,
+    "FaRobot": <FaRobot></FaRobot>
   };
 
 const FeatureCard = ({ featureData }) => {
   const { title, description, icon, image} = featureData
-  console.log(featureData);
   // Get the correct icon component
   const IconComponent = iconMap[icon];
 

@@ -1,8 +1,36 @@
 import { useForm } from "react-hook-form";
+import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const SignUp = () => {
+  const {signUpUser, updateUserProfile} = useAuth()
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data.name, data.photoURL, data.email, data.password);
+  const navigate = useNavigate()
+  const onSubmit = data => {
+    signUpUser(data.email, data.password)
+    .then(result => {
+      const loggedUser = result.user
+      console.log(loggedUser);
+      updateUserProfile(data.name, data.photoURL)
+      reset()
+      .then(() =>{
+        if (loggedUser) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Signup successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+        navigate('/')
+      })
+    }).catch(error => {
+      console.log(error);
+      
+    })
+  };
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
