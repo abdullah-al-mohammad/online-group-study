@@ -1,25 +1,35 @@
 import React from "react";
 import { Link } from "react-router";
 import logo from '../../assets/logo.png'
+import useAuth from "./../../Hooks/useAuth";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user, logoutUser } = useAuth();
+  const handleLogout = () => {
+    // Logout user  
+    logoutUser()
+      .then(result => {
+        console.log(result.user); // Logs the authenticated user
+      })
+  }
   const navLinks = (
     <>
       <li>
         <Link to={'assignment'}>Assaignments</Link>
       </li>
-      <li>
+      {user ? '' : <li>
         <Link to={'login'}>Login</Link>
-      </li>
-      <li>
-        <Link to={'signup'}>register</Link>
-      </li>
-      <li>
+      </li>}
+      {user ? '' : <li>
+        <Link to={'signup'}>Signup</Link>
+      </li>}
+      {user && <li>
         <Link to={'createassignment'}>Create Assignment</Link>
-      </li>
-      <li>
-        <Link to={'createassignment'}>Pending Assignment</Link>
-      </li>
+      </li>}
+      {user && <li>
+        <Link to={'pendingassignment'}>Pending Assignment</Link>
+      </li>}
     </>
   );
   return (
@@ -46,7 +56,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-5 p-2 shadow"
             >
               {navLinks}
             </ul>
@@ -60,10 +70,15 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        {/* <div className="navbar-end">
-          <Link>login</Link>
-          <Link>register</Link>
-        </div> */}
+        {user && <div className="dropdown dropdown-hover">
+          <div tabIndex={0} role="button" className="btn m-1">
+            {user.photoURL ? <img className="w-25" src={user.photoURL} alt="" /> : <FaUserCircle />}
+          </div>
+          <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <li><Link onClick={handleLogout} to={'/login'}>Logout</Link></li>
+            <li><button>my attempted assignments</button></li>
+          </ul>
+        </div>}
       </div>
     </div>
   );
