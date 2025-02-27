@@ -3,18 +3,47 @@ import { useState } from "react";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form';
+import useAuth from "./../../../Hooks/useAuth";
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const CreateAssignment = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const {user} = useAuth()
+  const axiosPublic = useAxiosPublic()
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm()
 
   const onSubmit = (data) => {
     console.log(data);
+
+    const assignmentInfo ={
+      title: data.title,
+      date: data.date,
+      marks: data.marks,
+      image: data.img,
+      difficulty: data.difficulty,
+      description: data.description,
+      email: user?.email
+    }
+    axiosPublic.post('/assignment', assignmentInfo)
+    .then(res =>{
+      reset()
+      if(res.data.insertedId){
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Assignment Submited Successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    })
   };
   return (
     <div>
