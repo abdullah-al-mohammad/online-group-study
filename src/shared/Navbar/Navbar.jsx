@@ -25,10 +25,10 @@ const Navbar = () => {
         <Link to={'signup'}>Signup</Link>
       </li>}
       {user && <li>
-        <Link to={'createassignment'}>Create Assignment</Link>
+        <Link to={'createAssignment'}>Create Assignment</Link>
       </li>}
       {user && <li>
-        <Link to={'pendingassignment'}>Pending Assignment</Link>
+        <Link to={'pendingAssignment'}>Pending Assignment</Link>
       </li>}
     </>
   );
