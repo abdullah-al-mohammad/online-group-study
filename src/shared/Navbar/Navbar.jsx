@@ -16,7 +16,7 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to={'assignment'}>Assaignments</Link>
+        <Link to={'assignment'}>Assignments</Link>
       </li>
       {user ? '' : <li>
         <Link to={'login'}>Login</Link>
