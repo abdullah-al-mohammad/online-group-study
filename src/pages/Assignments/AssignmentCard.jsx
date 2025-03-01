@@ -3,7 +3,7 @@ import { ImBin } from "react-icons/im";
 import { RxUpdate } from "react-icons/rx";
 import { MdOutlinePreview } from "react-icons/md";
 
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment}) => {
   const { title, image, marks, difficulty } = assignment
   return (
     <div className="card bg-base-100 w-96 h-96 shadow-xl">
