@@ -13,7 +13,7 @@ const SignUp = () => {
     signUpUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user
-        console.log(loggedUser);
+        // console.log(loggedUser);
         // update user profile
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
@@ -33,8 +33,8 @@ const SignUp = () => {
                     timer: 1500
                   });
                 }
+                navigate('/')
               })
-            navigate('/')
           })
       }).catch(error => {
         console.log(error);
