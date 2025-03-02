@@ -1,55 +1,65 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import AssignmentCard from "./AssignmentCard";
 import Heading from "../../Components/Heading/Heading";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import 'react-tabs/style/react-tabs.css'
+import AssignmentTab from "./AssignmentTab";
+import './assignmentCard.css'
 
 const Assignments = () => {
+  const categories = ['easy', 'medium', 'hard']
+  const { category } = useParams()
+  console.log(category);
+  const initialIndex = categories.includes(category) ? categories.indexOf(category) : 0;
+  const [tabIndex, setTabIndex] = useState(initialIndex);
+
   const axiosPublic = useAxiosPublic();
-  const { data: assignments = [] } = useQuery({
+
+  const { data: assignments = [], isLoading: loading } = useQuery({
     queryKey: ["assignment"],
     queryFn: async () => {
       const res = await axiosPublic.get("/assignment");
       return res.data;
     },
   });
+  console.log(assignments);
 
-  const categories = ['easy', 'medium', 'hard']
-  const {category} = useParams()
-  console.log(category);
-    const intialIndex = categories.indexOf(category)
+  const easy = assignments.filter((data) => data.difficulty === "easy");
+  const medium = assignments.filter((data) => data.difficulty === "medium");
+  const hard = assignments.filter((data) => data.difficulty === "hard");
 
-    const easy = assignments.filter((data) => data.difficulty === "easy");
-    const medium = assignments.filter((data) => data.difficulty === "medium");
-    const hard = assignments.filter((data) => data.difficulty === "hard");
-  
-    const [tabIndex, setTabIndex] = useState(intialIndex);
-  
+
   return (
     <div>
-      <Heading
-        heading={"Assignments Hub"}
-        subHeading={"Access all your tasks and deadlines here"}
-      ></Heading>
+      <div className="assignmentCover min-h-screen">
+        <Heading
+          heading={"Assignments Hub"}
+          subHeading={"Access all your tasks and deadlines here"}
+        ></Heading>
+      </div>
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
+          <Tab>All</Tab>
           <Tab>Easy</Tab>
           <Tab>Medium</Tab>
           <Tab>Hard</Tab>
         </TabList>
         <TabPanel>
-            <AssignmentCard difficultyLevel={easy}></AssignmentCard>
+          <AssignmentTab skill={assignments}></AssignmentTab>
         </TabPanel>
         <TabPanel>
-            <AssignmentCard difficultyLevel={medium}></AssignmentCard>
+          <AssignmentTab skill={easy}></AssignmentTab>
         </TabPanel>
         <TabPanel>
-            <AssignmentCard difficultyLevel={hard}></AssignmentCard>
+          <AssignmentTab skill={medium}></AssignmentTab>
+        </TabPanel>
+        <TabPanel>
+          <AssignmentTab skill={hard}></AssignmentTab>
         </TabPanel>
       </Tabs>
-      </div>
+    </div>
   );
 }
 export default Assignments;

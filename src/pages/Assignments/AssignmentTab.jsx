@@ -1,12 +1,13 @@
 
 import AssignmentCard from "./AssignmentCard";
 
-const AssignmentTab = ({ difficultyLevel }) => {
+const AssignmentTab = ({ skill }) => {
+  console.log(skill);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       {
-        difficultyLevel.map(data => <AssignmentCard key={data._id} assignment={data}></AssignmentCard>)
+        skill.map(data => <AssignmentCard key={data._id} assignment={data}></AssignmentCard>)
       }
     </div>
   );
