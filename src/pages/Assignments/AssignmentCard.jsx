@@ -5,6 +5,7 @@ import { MdOutlinePreview } from "react-icons/md";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAuth from "./../../Hooks/useAuth";
+import { Link } from "react-router";
 
 const AssignmentCard = ({ assignment }) => {
   const { title, image, marks, difficulty, _id } = assignment;
@@ -13,15 +14,15 @@ const AssignmentCard = ({ assignment }) => {
   console.log(assignment.email);
 
   const handleDelete = async () => {
-    console.log("user deleted");
+    // if user have the same email as the assignment email then delete the assignment
     if (user?.email !== assignment.email) {
       return Swal.fire({
         icon: "error",
-        title: "oops",
+        title: "You don't have permission to delete this assignment",
         text: "You can't delete this assignment"
       })
     }
-
+    // confirm the delete
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -42,6 +43,7 @@ const AssignmentCard = ({ assignment }) => {
         }
       }
     });
+
   };
   return (
     <div className="card bg-base-100 w-96 h-96 shadow-xl">
@@ -64,9 +66,9 @@ const AssignmentCard = ({ assignment }) => {
           >
             <ImBin />
           </button>
-          <button className="btn btn-success tooltip" data-tip="Update">
+          <Link to={`/updateAssignment/${assignment._id}`} className="btn btn-success tooltip" data-tip="Update">
             <RxUpdate />
-          </button>
+          </Link>
           <button className="btn btn-primary tooltip" data-tip="View">
             <MdOutlinePreview />
           </button>
