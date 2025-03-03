@@ -37,7 +37,8 @@ export const router = createBrowserRouter([
                 path: `/updateAssignment/:id`,
                 element: <UpdateAssignment></UpdateAssignment>,
                 loader: ({ params }) => fetch(`http://localhost:3000/assignment/${params.id}`)
-            }
+            },
+            
         ]
     }
 ])

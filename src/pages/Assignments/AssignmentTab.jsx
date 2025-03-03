@@ -2,7 +2,7 @@
 import AssignmentCard from "./AssignmentCard";
 
 const AssignmentTab = ({ skill }) => {
-  console.log(skill);
+  // console.log(skill);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

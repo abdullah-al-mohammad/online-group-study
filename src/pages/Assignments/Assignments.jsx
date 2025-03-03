@@ -7,11 +7,12 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import 'react-tabs/style/react-tabs.css'
 import AssignmentTab from "./AssignmentTab";
 import './assignmentCard.css'
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Assignments = () => {
   const categories = ['easy', 'medium', 'hard']
   const { category } = useParams()
-  console.log(category);
+  // create initial value for tabIndex
   const initialIndex = categories.includes(category) ? categories.indexOf(category) : 0;
   const [tabIndex, setTabIndex] = useState(initialIndex);
 
@@ -24,7 +25,7 @@ const Assignments = () => {
       return res.data;
     },
   });
-  console.log(assignments);
+  
 
   const easy = assignments.filter((data) => data.difficulty === "easy");
   const medium = assignments.filter((data) => data.difficulty === "medium");
@@ -39,7 +40,14 @@ const Assignments = () => {
           subHeading={"Access all your tasks and deadlines here"}
         ></Heading>
       </div>
-      <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+      {
+        loading ?<ClipLoader
+        color={'#008000'}
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /> :<Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
           <Tab>All</Tab>
           <Tab>Easy</Tab>
@@ -59,6 +67,7 @@ const Assignments = () => {
           <AssignmentTab skill={hard}></AssignmentTab>
         </TabPanel>
       </Tabs>
+      }
     </div>
   );
 }

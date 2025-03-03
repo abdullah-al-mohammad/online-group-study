@@ -49,10 +49,10 @@ const CreateAssignment = () => {
     <div>
       <h1>Create a New Assignment</h1>
       {/* Add your form or other components here */}
-      <div className="hero-content">
+      <div>
         <div className="card">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-            <div className='grid grid-cols-1 md:grid-cols-2 place-items-center gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Title</span>
