@@ -7,7 +7,7 @@ import useAuth from "./../../Hooks/useAuth";
 import { Link } from "react-router";
 
 const AssignmentCard = ({ assignment }) => {
-  const { title, image, marks, difficulty } = assignment;
+  const { title, image, marks, difficulty, _id } = assignment;
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
@@ -63,8 +63,8 @@ const AssignmentCard = ({ assignment }) => {
           >
             <ImBin />
           </button>
-          <Link 
-              to={`/updateAssignment/${assignment._id}`}>
+          <Link
+            to={`/updateAssignment/${assignment._id}`}>
             <button
               className="btn btn-success tooltip"
               data-tip="Update"
@@ -72,9 +72,11 @@ const AssignmentCard = ({ assignment }) => {
               <RxUpdate />
             </button>
           </Link>
-          <button className="btn btn-primary tooltip" data-tip="View">
-            <MdOutlinePreview />
-          </button>
+          <Link to={`/assignmentDetails/${_id}`}>
+            <button className="btn btn-primary tooltip" data-tip="View">
+              <MdOutlinePreview />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

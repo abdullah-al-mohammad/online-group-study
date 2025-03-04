@@ -6,6 +6,8 @@ import Login from "../login/Login";
 import CreateAssignment from "../pages/Assignments/CreateAssignment/CreateAssignment";
 import Assignments from "../pages/Assignments/Assignments";
 import UpdateAssignment from "../pages/Assignments/UpdateAssignment";
+import AssignmentDetails from "../pages/Assignments/ViewAssignment/AssignmentDetails";
+import ProtectRoute from "./ProtectRoute/ProtectRoute";
 
 
 export const router = createBrowserRouter([
@@ -38,7 +40,11 @@ export const router = createBrowserRouter([
                 element: <UpdateAssignment></UpdateAssignment>,
                 loader: ({ params }) => fetch(`http://localhost:3000/assignment/${params.id}`)
             },
-            
+            {
+                path: '/assignmentDetails/:id',
+                element: <ProtectRoute><AssignmentDetails></AssignmentDetails></ProtectRoute>
+            }
+
         ]
     }
 ])

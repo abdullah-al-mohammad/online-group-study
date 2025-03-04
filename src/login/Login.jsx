@@ -2,11 +2,13 @@ import React from "react";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const Login = () => {
   const { loginUser } = useAuth();
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from || '/'
   const {
     register,
     reset,
@@ -16,7 +18,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     loginUser(data.email, data.password).then((result) => {
-      const user = reset.user;
+      const user = result.user;
       if (user) {
         Swal.fire({
           position: "top-end",
@@ -26,7 +28,7 @@ const Login = () => {
           timer: 1500,
         });
       }
-      navigate('/')
+      navigate(from, { replace: true })
     });
   };
   return (
