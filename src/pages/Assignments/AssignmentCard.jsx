@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAuth from "./../../Hooks/useAuth";
 import { Link } from "react-router";
 
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment, refetch }) => {
   const { title, image, marks, difficulty, _id } = assignment;
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
@@ -33,6 +33,7 @@ const AssignmentCard = ({ assignment }) => {
       if (result.isConfirmed) {
         const res = await axiosPublic.delete(`/assignment/${assignment._id}`);
         if (res.data.deletedCount > 0) {
+          refetch()
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
