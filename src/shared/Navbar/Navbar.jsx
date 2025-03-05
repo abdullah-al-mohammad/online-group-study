@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link to={'createAssignment'}>Create Assignment</Link>
       </li>}
       {user && <li>
-        <Link to={'pendingAssignment'}>Pending Assignment</Link>
+        <Link to={'pending'}>Pending Assignment</Link>
       </li>}
     </>
   );

@@ -10,6 +10,7 @@ import AssignmentDetails from "../pages/Assignments/ViewAssignment/AssignmentDet
 import ProtectRoute from "./ProtectRoute/ProtectRoute";
 import AssignmentSubmissionForm from "../pages/Assignments/AssignmentSubmissionForm/AssignmentSubmissionForm";
 import MyAssignment from "../pages/Assignments/MyAssignment/MyAssignment";
+import PendingAssignment from '../pages/Assignments/PendingAssignment/PendingAssignment'
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: '/assignmentSubmission',
                 element: <AssignmentSubmissionForm></AssignmentSubmissionForm>
+            },
+            {
+                path: '/pending',
+                element: <PendingAssignment></PendingAssignment>
             }
 
         ]

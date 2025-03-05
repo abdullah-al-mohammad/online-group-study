@@ -5,10 +5,13 @@ import { Controller, useForm } from "react-hook-form";
 import useAuth from "./../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useLocation, useNavigate } from "react-router";
 const AssignmentSubmissionForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate()
+  const location = useLocation()
   const {
     register,
     handleSubmit,
@@ -26,24 +29,28 @@ const AssignmentSubmissionForm = () => {
       submittedAt:  data.date.toISOString().split("T")[0], //
       email: user?.email,
       note: data.note,
+      title: data.title,
+      marks: data.marks,
+      name: user?.displayName
     };
-    axiosSecure.post("/submit", assignmentSubmit).then((res) => {
+    axiosSecure.post("/assignment?type=submit", assignmentSubmit).then((res) => {
       reset();
       if (res.data.insertedId) {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Assignment Submited Successfully",
+          title: "Assignment Submitted Successfully",
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate('/pending')
       }
     });
   };
 
   return (
     <div>
-      <h1 className="text-3xl text-center">Assignmnet Submission Form</h1>
+      <h1 className="text-3xl text-center">Assignment Submission Form</h1>
       <div>
         <div className="card">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -62,13 +69,15 @@ const AssignmentSubmissionForm = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Note</span>
+                  <span className="label-text">Title</span>
                 </label>
-                <textarea
-                  placeholder="Note"
-                  className="textarea textarea-bordered textarea-xs w-full max-w-xs"
-                  {...register("note")}
-                ></textarea>
+                <input type="text" placeholder="title" {...register('title')} className="input input-bordered" required />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Marks</span>
+                </label>
+                <input type="number" placeholder="marks" {...register('marks')} className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
@@ -86,6 +95,16 @@ const AssignmentSubmissionForm = () => {
                     />
                   )}
                 />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Note</span>
+                </label>
+                <textarea
+                  placeholder="Note"
+                  className="textarea textarea-bordered textarea-xs w-full h-10"
+                  {...register("note")}
+                ></textarea>
               </div>
             </div>
             <div className="form-control mt-6">

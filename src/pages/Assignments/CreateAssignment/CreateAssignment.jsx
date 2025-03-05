@@ -31,7 +31,7 @@ const CreateAssignment = () => {
       description: data.description,
       email: user?.email
     }
-    axiosPublic.post('/assignment', assignmentInfo)
+    axiosPublic.post('/assignment?type=create', assignmentInfo)
     .then(res =>{
       reset()
       if(res.data.insertedId){
