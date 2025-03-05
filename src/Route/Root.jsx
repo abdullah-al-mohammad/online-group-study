@@ -9,6 +9,7 @@ import UpdateAssignment from "../pages/Assignments/UpdateAssignment";
 import AssignmentDetails from "../pages/Assignments/ViewAssignment/AssignmentDetails";
 import ProtectRoute from "./ProtectRoute/ProtectRoute";
 import AssignmentSubmissionForm from "../pages/Assignments/AssignmentSubmissionForm/AssignmentSubmissionForm";
+import MyAssignment from "../pages/Assignments/MyAssignment/MyAssignment";
 
 
 export const router = createBrowserRouter([
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
                 element: <Assignments></Assignments>
             },
             {
+                path: '/myAssignment',
+                element: <MyAssignment></MyAssignment>
+            },
+            {
                 path: `/updateAssignment/:id`,
                 element: <UpdateAssignment></UpdateAssignment>,
                 loader: ({ params }) => fetch(`http://localhost:3000/assignment/${params.id}`)
@@ -44,7 +49,7 @@ export const router = createBrowserRouter([
             {
                 path: '/assignmentDetails/:id',
                 element: <ProtectRoute><AssignmentDetails></AssignmentDetails></ProtectRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/assignment/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:3000/assignment/${params.id}`)
             },
             {
                 path: '/assignmentSubmission',

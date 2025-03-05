@@ -76,7 +76,7 @@ const Navbar = () => {
           </div>
           <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
             <li><Link onClick={handleLogout} to={'/login'}>Logout</Link></li>
-            <li><button>my attempted assignments</button></li>
+            <li><Link to={'/myAssignment'}>my attempted assignments</Link></li>
           </ul>
         </div>}
       </div>

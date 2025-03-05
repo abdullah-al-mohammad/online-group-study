@@ -12,7 +12,7 @@ const AssignmentDetails = () => {
           {image ? <img
             src={image}
             alt="Shoes"
-          />: 'image is undefind'}
+          /> : 'image is undefind'}
         </figure>
         <div className="card-body bg-gray-500">
           <h2 className="card-title">Assignment Title:-{title}</h2>
@@ -20,17 +20,17 @@ const AssignmentDetails = () => {
             {description}
           </p>
           <p>
-          Assignment Mark:-<span className="text-red-500">{marks}</span>
+            Assignment Mark:-<span className="text-red-500">{marks}</span>
           </p>
           <p>
-          Complexity:- <span className="text-red-500">{difficulty}</span>
+            Complexity:- <span className="text-red-500">{difficulty}</span>
           </p>
           <p>
-          Date:- <span className="text-red-500">{date}</span>
+            Date:- <span className="text-red-500">{date}</span>
           </p>
           <div className="card-actions justify-end">
             <Link to={'/assignmentSubmission'}>
-            <button className="btn btn-primary">Take Assignment</button>
+              <button className="btn btn-primary">Take Assignment</button>
             </Link>
           </div>
         </div>
