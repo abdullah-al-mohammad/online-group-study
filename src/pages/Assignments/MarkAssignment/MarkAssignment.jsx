@@ -18,8 +18,8 @@ const MarkAssignment = () => {
                     Mark: {mark.note}
                   </p>
                   <div className="card-actions">
-                  <input type="text" placeholder="giving marks" className="input" />
-                  <input type="text" placeholder="give your feedback" className="input" />
+                  <input type="text" placeholder="giving marks" className="input border border-red-400" />
+                  <input type="text" placeholder="give your feedback" className="input border border-red-400" />
                   </div>
                 </div>
               </div>
