@@ -11,15 +11,23 @@ const MarkAssignment = () => {
           return (
             <div className="card">
               <div className="card bg-base-100 w-96 shadow-sm">
-                
                 <div className="card-body">
                   <h2 className="card-title">PdfLink: {mark.pdfLink}</h2>
-                  <p>
-                    Mark: {mark.note}
-                  </p>
+                  <p>Mark: {mark.note}</p>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="giving marks"
+                      className="input border border-red-400"
+                    />
+                    <input
+                      type="text"
+                      placeholder="give your feedback"
+                      className="input border border-red-400"
+                    />
+                  </div>
                   <div className="card-actions">
-                  <input type="text" placeholder="giving marks" className="input border border-red-400" />
-                  <input type="text" placeholder="give your feedback" className="input border border-red-400" />
+                  <button className="btn btn-active btn-success">Success</button>
                   </div>
                 </div>
               </div>
