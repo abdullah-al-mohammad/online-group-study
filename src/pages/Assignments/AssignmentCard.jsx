@@ -7,7 +7,7 @@ import useAuth from "./../../Hooks/useAuth";
 import { Link } from "react-router";
 
 const AssignmentCard = ({ assignment, refetch }) => {
-  const { title, image, marks, difficulty, _id, status } = assignment;
+  const { title, image, marks, difficulty, _id, status, feedBack, note } = assignment;
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
@@ -46,14 +46,16 @@ const AssignmentCard = ({ assignment, refetch }) => {
   return (
     <div>
       {status === 'pending' ? '' : <div className="card bg-base-100 w-96 h-96 shadow-xl">
-        <figure>
+        {image && <figure>
           <img src={image} alt="image" />
-        </figure>
+        </figure>}
         <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p className="text-gray-400">
+          {title && <h2 className="card-title">{title}</h2>}
+          {marks ? <p className="text-gray-400">
             Mark: <span className="text-success">{marks}</span>
-          </p>
+          </p> : <p className="text-gray-400">
+            Note: <span className="text-success">{note}</span>
+          </p>}
           <p className="text-gray-400">
             Tasks: <span className="text-red-500">{difficulty}</span>
           </p>

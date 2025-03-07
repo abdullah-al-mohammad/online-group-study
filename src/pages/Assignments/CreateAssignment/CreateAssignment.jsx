@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 
 const CreateAssignment = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const {user} = useAuth()
+  const { user } = useAuth()
   const axiosPublic = useAxiosPublic()
   const {
     register,
@@ -22,7 +22,7 @@ const CreateAssignment = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    const assignmentInfo ={
+    const assignmentInfo = {
       title: data.title,
       date: data.date,
       marks: data.marks,
@@ -32,18 +32,18 @@ const CreateAssignment = () => {
       email: user?.email
     }
     axiosPublic.post('/assignment?type=create', assignmentInfo)
-    .then(res =>{
-      reset()
-      if(res.data.insertedId){
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Assignment Submited Successfully",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-    })
+      .then(res => {
+        reset()
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Assignment Submited Successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
   };
   return (
     <div>
