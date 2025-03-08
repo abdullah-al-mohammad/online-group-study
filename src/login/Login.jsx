@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import login from '../assets/loginimage.png';
 
 const Login = () => {
   const { loginUser } = useAuth();
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from || '/'
+  const [showPassword, setShowPassword] = useState(false)
   const {
     register,
     reset,
@@ -42,14 +45,10 @@ const Login = () => {
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Signup now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-              a id nisi.
-            </p>
+            <img src={login} alt="" />
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+            <h1 className="text-2xl font-bold text-center">Login now!</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -70,19 +69,24 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  {...register("password", {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 20,
-                    pattern:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*])[a-zA-Z\d@#$%^&*]+$/,
-                  })}
-                  className="input input-bordered"
-                  required
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="password"
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 20,
+                      pattern:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*])[a-zA-Z\d@#$%^&*]+$/,
+                    })}
+                    className="input input-bordered w-full"
+                    required
+                  />
+                  <p className="right-3 bottom-3 absolute" onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                  </p>
+                </div>
                 {errors.password?.type === "required" && (
                   <span className="text-red-500">password is required</span>
                 )}
@@ -112,6 +116,9 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>
+            {
+              <p className="p-5">Don't have an account please? <Link className="text-primary font-mono font-bold" to={'/signup'}>create account</Link></p>
+            }
           </div>
         </div>
       </div>

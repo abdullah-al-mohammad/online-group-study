@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from "./../../../Hooks/useAuth";
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
+import './createassignment.css'
 
 const CreateAssignment = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -38,7 +39,7 @@ const CreateAssignment = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Assignment Submited Successfully",
+            title: "Assignment Submitted Successfully",
             showConfirmButton: false,
             timer: 1500
           });
@@ -46,8 +47,8 @@ const CreateAssignment = () => {
       })
   };
   return (
-    <div>
-      <h1>Create a New Assignment</h1>
+    <div className='py-5 assignment-form'>
+      <h1 className='text-3xl text-center'>Create a New Assignment</h1>
       {/* Add your form or other components here */}
       <div>
         <div className="card">
