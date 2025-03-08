@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import useAuth from "./../../../Hooks/useAuth";
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
@@ -17,15 +17,14 @@ const CreateAssignment = () => {
     handleSubmit,
     reset,
     watch,
+    control,
     formState: { errors },
   } = useForm()
 
   const onSubmit = (data) => {
-    console.log(data);
-
     const assignmentInfo = {
       title: data.title,
-      date: data.date,
+      date: data.date.toISOString().split("T")[0],
       marks: data.marks,
       image: data.img,
       difficulty: data.difficulty,
@@ -64,7 +63,18 @@ const CreateAssignment = () => {
                 <label className="label">
                   <span className="label-text">Date</span>
                 </label>
-                <DatePicker className='input input-bordered' selected={startDate} {...register('date')} onChange={(date) => setStartDate(date)} />
+                <Controller
+                  name="date"
+                  control={control}
+                  defaultValue={new Date()} // Default to today's date
+                  render={({ field }) => (
+                    <DatePicker
+                      className="input input-bordered"
+                      selected={field.value}
+                      onChange={(date) => field.onChange(date)}
+                    />
+                  )}
+                />
               </div>
               <div className="form-control">
                 <label className="label">

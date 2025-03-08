@@ -10,7 +10,9 @@ const Navbar = () => {
     // Logout user  
     logoutUser()
       .then(result => {
-        console.log(result.user); // Logs the authenticated user
+        if(result.user){
+          return null
+        } // Logs the authenticated user
       })
   }
   const navLinks = (
@@ -71,10 +73,10 @@ const Navbar = () => {
           </ul>
         </div>
         {user && <div className="dropdown dropdown-hover">
-          <div tabIndex={0} role="button" className="btn m-1">
-            {user.photoURL ? <img className="w-25" src={user.photoURL} alt="" /> : <FaUserCircle />}
+          <div tabIndex={0} role="button" className={user.photoURL ? '' : "btn m-1"}>
+            {user.photoURL ? <img className="w-[40px] h-[40px] rounded-full" src={user.photoURL} alt="" /> : <FaUserCircle />}
           </div>
-          <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+          <ul tabIndex={0} className="dropdown-content menu bg-black rounded rounded-full z-[1] w-52 p-2 shadow">
             <li><Link onClick={handleLogout} to={'/login'}>Logout</Link></li>
             <li><Link to={'/myAssignment'}>my attempted assignments</Link></li>
           </ul>
