@@ -3,6 +3,7 @@ import useAssignment from "../../../Hooks/useAssignment";
 import { useForm } from "react-hook-form"
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MarkAssignment = () => {
   const [assignmentMark] = useAssignment();
@@ -36,6 +37,9 @@ const MarkAssignment = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>assignment-mark</title>
+      </Helmet>
       {assignmentMark.map((mark) => {
         if (mark.status === "pending") {
           return (

@@ -1,9 +1,13 @@
 import { Link } from "react-router";
 import useAssignment from "../../../Hooks/useAssignment";
+import { Helmet } from "react-helmet";
 const PendingAssignment = () => {
   const [assignments] = useAssignment();
   return (
     <div>
+      <Helmet>
+        <title>pending-assignment</title>
+      </Helmet>
       <h1 className="text-3xl text-center">Pending Assignments</h1>
       {/* Add your component logic here */}
       <div>

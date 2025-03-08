@@ -8,6 +8,7 @@ import { ImBin } from "react-icons/im";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 import Heading from "../../../Components/Heading/Heading";
+import { Helmet } from "react-helmet";
 
 const MyAssignment = () => {
   const axiosSecure = useAxiosSecure();
@@ -59,6 +60,9 @@ const MyAssignment = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>my-assignment</title>
+      </Helmet>
       <Heading
         heading={"Exploring My Assignment"}
         subHeading={"Insights, Purpose, and Key Takeaways"}

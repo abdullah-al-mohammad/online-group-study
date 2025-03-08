@@ -31,14 +31,14 @@ const AuthProvider = ({ children }) => {
     setLoading(true)
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoUrl: photo
+      photoURL: photo
     })
   }
   // auth state change
   useEffect(() => {
     const unsubsCribe = onAuthStateChanged(auth, (currentUser) => {
-      setLoading(false)
       setUser(currentUser)
+      setLoading(false)
       if (currentUser) {
         console.log(currentUser);
       } else {

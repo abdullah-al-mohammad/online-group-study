@@ -6,12 +6,13 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useLoaderData, useNavigate } from "react-router";
+import { Helmet } from "react-helmet";
 
 const UpdateAssignment = () => {
   const [startDate, setStartDate] = useState(new Date());
   const axiosPublic = useAxiosPublic()
-const {_id, title, marks, image, difficulty, date, description} = useLoaderData()
-const navigate = useNavigate()
+  const { _id, title, marks, image, difficulty, date, description } = useLoaderData()
+  const navigate = useNavigate()
 
   const {
     register,
@@ -42,6 +43,9 @@ const navigate = useNavigate()
   };
   return (
     <div>
+      <Helmet>
+        <title>update-assignment</title>
+      </Helmet>
       <h1 className="text-center text-3xl mt-5">Update a Assignment</h1>
       {/* Add your form or other components here */}
       <div>

@@ -8,6 +8,7 @@ import "react-tabs/style/react-tabs.css";
 import AssignmentTab from "./AssignmentTab";
 import "./assignmentCard.css";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Helmet } from "react-helmet";
 
 const Assignments = () => {
   const categories = ["easy", "medium", "hard"];
@@ -38,6 +39,10 @@ const Assignments = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>brainConnect || assignment hub</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <div className="assignmentCover min-h-screen">
         <Heading
           heading={"Assignments Hub"}
