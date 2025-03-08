@@ -19,12 +19,10 @@ const MyAssignment = () => {
       const response = await axiosSecure.get(
         `/assignment?email=${user?.email}`
       );
-      console.log(response);
 
       return response.data;
     },
   });
-  console.log(assignments);
 
   const handleDelete = async (id) => {
     // if user have the same email as the assignment email then delete the assignment

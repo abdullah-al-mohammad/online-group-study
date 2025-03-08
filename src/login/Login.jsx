@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import './login.css'
 
 const Login = () => {
   const { loginUser } = useAuth();
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from || '/'
+  const [showPassword, setShowPassword] = useState(false)
   const {
     register,
     reset,
@@ -39,17 +42,17 @@ const Login = () => {
         <title>home || login</title>
         <meta name="description" content="Helmet application" />
       </Helmet>
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero bg-login  min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Signup now!</h1>
+            <h1 className="text-5xl font-bold">Login Your Account!</h1>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
               a id nisi.
             </p>
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <div className="card bg-form w-full max-w-sm shrink-0 shadow-2xl">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -70,8 +73,9 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
+                <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="password"
                   {...register("password", {
                     required: true,
@@ -80,9 +84,15 @@ const Login = () => {
                     pattern:
                       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*])[a-zA-Z\d@#$%^&*]+$/,
                   })}
-                  className="input input-bordered"
+                  className="input input-bordered w-full"
                   required
                 />
+                <p className="absolute right-3 bottom-3" onClick={()=> setShowPassword(!showPassword)}>
+                  {
+                    showPassword ? <FaEyeSlash /> : <FaEye />
+                  }
+                </p>
+                </div>
                 {errors.password?.type === "required" && (
                   <span className="text-red-500">password is required</span>
                 )}
@@ -112,6 +122,9 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>
+            {
+              <p className="p-5">Don't  have an account please?<Link className="text-primary font-mono font-bold" to={'/signup'}>create account</Link></p>
+            }
           </div>
         </div>
       </div>

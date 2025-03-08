@@ -22,11 +22,10 @@ const AssignmentSubmissionForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
 
     const assignmentSubmit = {
       pdfLink: data.pdfLink,
-      submittedAt: data.date.toISOString().split("T")[0], //
+      submittedAt: data.date.toISOString().split("T")[0],
       email: user?.email,
       note: data.note,
       title: data.title,

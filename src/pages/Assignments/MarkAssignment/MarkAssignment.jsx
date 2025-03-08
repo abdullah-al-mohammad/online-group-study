@@ -15,8 +15,6 @@ const MarkAssignment = () => {
     formState: { errors },
   } = useForm()
   const onSubmit = (data, id, status) => {
-    console.log(data);
-
     const markInfo = {
       marks: data.mark,
       feedback: data.feedback,
