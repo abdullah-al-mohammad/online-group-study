@@ -82,7 +82,9 @@ const Navbar = () => {
             <li><Link to={'/myAssignment'}>my attempted assignments</Link></li>
           </ul>
         </div>}
+        <div className="pl-3">
         <ThemeToggle></ThemeToggle>
+        </div>
       </div>
     </div>
   );
