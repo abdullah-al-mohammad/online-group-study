@@ -46,7 +46,7 @@ const CreateAssignment = () => {
       })
   };
   return (
-    <div className='py-5 assignment-form'>
+    <div className='py-8 assignment-form'>
       <h1 className='text-3xl text-center'>Create a New Assignment</h1>
       {/* Add your form or other components here */}
       <div>

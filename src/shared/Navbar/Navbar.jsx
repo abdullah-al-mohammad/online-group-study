@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import logo from '../../assets/logo.png'
 import useAuth from "./../../Hooks/useAuth";
 import { FaUserCircle } from "react-icons/fa";
+import { ThemeToggle } from "../../Components/Theme/ThemeToggle";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
@@ -10,7 +11,7 @@ const Navbar = () => {
     // Logout user  
     logoutUser()
       .then(result => {
-        if(result.user){
+        if (result.user) {
           return null
         } // Logs the authenticated user
       })
@@ -36,7 +37,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-gradient-to-r from-teal-600 to-indigo-700 text-white hadow-sm">
+      <div className="navbar bg-gradient-to-r from-teal-600 to-indigo-700 text-white shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,11 +77,12 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className={user.photoURL ? '' : "btn m-1"}>
             {user.photoURL ? <img className="w-[40px] h-[40px] rounded-full" src={user.photoURL} alt="" /> : <FaUserCircle />}
           </div>
-          <ul tabIndex={0} className="dropdown-content menu bg-black rounded rounded-full z-[1] w-52 p-2 shadow">
+          <ul tabIndex={0} className="dropdown-content menu bg-black rounded-full z-[1] w-52 p-2 shadow">
             <li><Link onClick={handleLogout} to={'/login'}>Logout</Link></li>
             <li><Link to={'/myAssignment'}>my attempted assignments</Link></li>
           </ul>
         </div>}
+        <ThemeToggle></ThemeToggle>
       </div>
     </div>
   );

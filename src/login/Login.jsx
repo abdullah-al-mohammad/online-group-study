@@ -4,13 +4,8 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
-<<<<<<< HEAD
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import login from '../assets/loginimage.png';
-=======
-import { FaEyeSlash, FaEye } from "react-icons/fa";
-import './login.css'
->>>>>>> ba801ef19bf00a4b6c47a49a24b64d9f4b281c8d
 
 const Login = () => {
   const { loginUser } = useAuth();

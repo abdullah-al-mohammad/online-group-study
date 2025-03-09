@@ -4,7 +4,7 @@ import Heading from '../../../Components/Heading/Heading';
 const FaqList = () => {
   return (
     <section className='my-7'>
-      <Heading heading={'Frequently Asked Questions ?'}></Heading>
+      <Heading heading={'Frequently Asked Questions'} subHeading={'?'}></Heading>
 
       <div className="collapse collapse-arrow bg-base-200">
         <input type="radio" name="my-accordion-2" defaultChecked />
